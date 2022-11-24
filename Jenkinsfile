@@ -13,9 +13,11 @@ pipeline {
             }
         }
         stage("Deploy") {
-            script {
-                def image_id = image + ":$BUILD_NUMBER"
-                sh "ansible-playbook playbook.yml -e image_id=${image_id}"
+            steps {
+                script {
+                    def image_id = image + ":$BUILD_NUMBER"
+                    sh "ansible-playbook playbook.yml -e image_id=${image_id}"
+                }
             }
         }
     }
