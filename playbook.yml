@@ -1,0 +1,12 @@
+- hosts: localhost
+  tasks:
+    - name: Deploy Service
+      k8s:
+        state: present
+        definition: "{{ lookup('template', 'k8s-service.yml') | from_yaml }}"
+        namespace: default
+    - name: Deploy Application
+      k8s:
+        state: present
+        definition: "{{ lookup('template', 'k8s-deploy.yml') | from_yaml }}"
+        namespace: default

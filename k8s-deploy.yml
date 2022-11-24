@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: hello-app
-          image: wschaefer42/kube-hello-app:v1
+          image: {{ image_id }}
           imagePullPolicy: Always
       restartPolicy: Always
   selector:
