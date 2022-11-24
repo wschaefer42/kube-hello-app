@@ -6,8 +6,10 @@ pipeline {
     stages {
         stage("Publish") {
             steps {
-                def appimage = docker.build registry + ":$BUILD_NUMBER"
-                appimage.push()
+                script {
+                    def appimage = docker.build registry + ":$BUILD_NUMBER"
+                    appimage.push()
+                }
             }
         }
     }
