@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-app
+  labels:
+    app: hello-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: hello-app
+      labels:
+        app: hello-app
+    spec:
+      containers:
+        - name: hello-app
+          image: wschaefer42/kube-hello-app:v1
+          imagePullPolicy: Always
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: hello-app
